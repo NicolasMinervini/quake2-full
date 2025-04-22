@@ -359,7 +359,7 @@ void fire_blaster (edict_t *self, vec3_t start, vec3_t dir, int damage, int spee
 	VectorCopy (start, bolt->s.origin);
 	VectorCopy (start, bolt->s.old_origin);
 	vectoangles (dir, bolt->s.angles);
-	VectorScale (dir, speed * 0.05, bolt->velocity);
+	VectorScale (dir, speed, bolt->velocity);
 	bolt->movetype = MOVETYPE_FLYMISSILE;
 	bolt->clipmask = MASK_SHOT;
 	bolt->solid = SOLID_BBOX;
@@ -372,7 +372,7 @@ void fire_blaster (edict_t *self, vec3_t start, vec3_t dir, int damage, int spee
 	bolt->touch = blaster_touch;
 	bolt->nextthink = level.time + 4;
 	bolt->think = G_FreeEdict;
-	bolt->dmg = damage * 10;
+	bolt->dmg = damage;
 	bolt->classname = "bolt";
 	if (hyper)
 		bolt->spawnflags = 1;

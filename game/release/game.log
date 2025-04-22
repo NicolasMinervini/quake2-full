@@ -4,4 +4,4 @@ C:\git\quake2-full\game\g_weapon.c(455,68): warning C4100: 'plane': unreferenced
   p_weapon.c
   Generating Code...
      Creating library .\..\release\gamex86.lib and object .\..\release\gamex86.exp
-  game.vcxproj -> C:\GOG Games\Quake II\testmod\gamex86.dll
+  game.vcxproj -> C:\GOG Games\Quake II\mariomod\gamex86.dll

@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\GOG Games\Quake II\testmod\gamex86.dll</FullPath>
+      <FullPath>C:\GOG Games\Quake II\mariomod\gamex86.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
