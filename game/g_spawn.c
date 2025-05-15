@@ -241,7 +241,7 @@ spawn_t	spawns[] = {
 	{"monster_gunner", SP_monster_gunner},
 	{"monster_infantry", SP_monster_infantry},
 	{"monster_soldier_light", SP_monster_soldier_light},
-	{"monster_soldier", SP_monster_soldier},
+	{"monster_soldier", SP_monster_infantry},
 	{"monster_soldier_ss", SP_monster_soldier_ss},
 	{"monster_tank", SP_monster_tank},
 	{"monster_tank_commander", SP_monster_tank},

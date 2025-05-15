@@ -955,7 +955,7 @@ void barrel_explode (edict_t *self)
 	org[1] = self->s.origin[1] + crandom() * self->size[1];
 	org[2] = self->s.origin[2] + crandom() * self->size[2];
 	ThrowDebris (self, "models/objects/debris2/tris.md2", spd, org);
-
+	
 	VectorCopy (save, self->s.origin);
 	if (self->groundentity)
 		BecomeExplosion2 (self);

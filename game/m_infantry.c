@@ -387,8 +387,8 @@ void infantry_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int dam
 {
 	int		n;
 
-// check for gib
-	if (self->health <= self->gib_health)
+// self->health <= self->gib_health
+	if (true)
 	{
 		gi.sound (self, CHAN_VOICE, gi.soundindex ("misc/udeath.wav"), 1, ATTN_NORM, 0);
 		for (n= 0; n < 2; n++)
@@ -481,17 +481,31 @@ void infantry_cock_gun (edict_t *self)
 
 	gi.sound (self, CHAN_WEAPON, sound_weapon_cock, 1, ATTN_NORM, 0);
 	n = (rand() & 15) + 3 + 7;
-	self->monsterinfo.pausetime = level.time + n * FRAMETIME;
+	//self->monsterinfo.pausetime = level.time + n * FRAMETIME;
 }
 
 void infantry_fire (edict_t *self)
 {
-	InfantryMachineGun (self);
+	vec3_t	forward, right;
+	vec3_t	start;
+	vec3_t	dir;
+	vec3_t	vec;
 
+	AngleVectors(self->s.angles, forward, right, NULL);
+	G_ProjectSource(self->s.origin, monster_flash_offset[MZ2_INFANTRY_MACHINEGUN_1], forward, right, start);
+
+	VectorCopy(self->enemy->s.origin, vec);
+	vec[2] += self->enemy->viewheight;
+	VectorSubtract(vec, start, dir);
+	VectorNormalize(dir);
+
+	monster_fire_rocket(self, start, dir, 50, 200, MZ2_INFANTRY_MACHINEGUN_1);
+	//InfantryMachineGun (self);
+	/*
 	if (level.time >= self->monsterinfo.pausetime)
 		self->monsterinfo.aiflags &= ~AI_HOLD_FRAME;
 	else
-		self->monsterinfo.aiflags |= AI_HOLD_FRAME;
+		self->monsterinfo.aiflags |= AI_HOLD_FRAME;*/
 }
 
 mframe_t infantry_frames_attack1 [] =
@@ -546,8 +560,8 @@ void infantry_attack(edict_t *self)
 {
 	if (range (self, self->enemy) == RANGE_MELEE)
 		self->monsterinfo.currentmove = &infantry_move_attack2;
-	else
-		self->monsterinfo.currentmove = &infantry_move_attack1;
+	//else
+		//self->monsterinfo.currentmove = &infantry_move_attack1;
 }
 
 
