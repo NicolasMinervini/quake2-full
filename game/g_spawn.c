@@ -147,7 +147,7 @@ void SP_turret_driver (edict_t *self);
 
 spawn_t	spawns[] = {
 	{"item_health", SP_item_health},
-	{"item_health_small", SP_item_health_small},
+	{"item_health_small", SP_monster_chick},
 	{"item_health_large", SP_item_health_large},
 	{"item_health_mega", SP_item_health_mega},
 
@@ -239,10 +239,10 @@ spawn_t	spawns[] = {
 	{"monster_berserk", SP_monster_berserk},
 	{"monster_gladiator", SP_monster_gladiator},
 	{"monster_gunner", SP_monster_gunner},
-	{"monster_infantry", SP_monster_infantry},
-	{"monster_soldier_light", SP_monster_soldier_light},
-	{"monster_soldier", SP_monster_infantry},
-	{"monster_soldier_ss", SP_monster_soldier_ss},
+	{"monster_infantry", SP_monster_flyer},
+	{"monster_soldier_light", SP_monster_infantry},
+	{"monster_soldier", SP_monster_soldier_light},
+	{"monster_soldier_ss", SP_monster_hover},
 	{"monster_tank", SP_monster_tank},
 	{"monster_tank_commander", SP_monster_tank},
 	{"monster_medic", SP_monster_medic},

@@ -325,7 +325,7 @@ void HelpComputer (edict_t *ent)
 		sk,
 		level.level_name,
 		game.helpmessage1,
-		game.helpmessage2,
+		"All mod features can be seen by playing normally!\nBreak open barrels to get coins.\nSome enemies will act differently!",
 		level.killed_monsters, level.total_monsters, 
 		level.found_goals, level.total_goals,
 		level.found_secrets, level.total_secrets);
@@ -520,6 +520,8 @@ void G_SetStats (edict_t *ent)
 		ent->client->ps.stats[STAT_HELPICON] = 0;
 
 	ent->client->ps.stats[STAT_SPECTATOR] = 0;
+
+	gi.centerprintf(ent, "coins: %i", ent->client->coins);
 }
 
 /*

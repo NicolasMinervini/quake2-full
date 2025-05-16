@@ -890,7 +890,9 @@ void barrel_explode (edict_t *self)
 	float	spd;
 	vec3_t	save;
 
-	T_RadiusDamage (self, self->activator, self->dmg, NULL, self->dmg+40, MOD_BARREL);
+	//T_RadiusDamage (self, self->activator, self->dmg, NULL, self->dmg+40, MOD_BARREL);
+
+	Drop_Item(self, GetItemByIndex(4));
 
 	VectorCopy (self->s.origin, save);
 	VectorMA (self->absmin, 0.5, self->size, self->s.origin);
@@ -957,10 +959,11 @@ void barrel_explode (edict_t *self)
 	ThrowDebris (self, "models/objects/debris2/tris.md2", spd, org);
 	
 	VectorCopy (save, self->s.origin);
-	if (self->groundentity)
-		BecomeExplosion2 (self);
-	else
-		BecomeExplosion1 (self);
+	//if (self->groundentity)
+		//BecomeExplosion2 (self);
+	//else
+		//BecomeExplosion1 (self);
+	G_FreeEdict(self);
 }
 
 void barrel_delay (edict_t *self, edict_t *inflictor, edict_t *attacker, int damage, vec3_t point)

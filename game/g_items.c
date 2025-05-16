@@ -621,10 +621,18 @@ qboolean Pickup_Armor (edict_t *ent, edict_t *other)
 	// handle armor shards specially
 	if (ent->item->tag == ARMOR_SHARD)
 	{
+		if (!other->client->coins) {
+			other->client->coins = 1;
+		}
+		else {
+			other->client->coins += 1;
+		}
+		/*
 		if (!old_armor_index)
-			other->client->pers.inventory[jacket_armor_index] = 2;
+			other->client->pers.inventory[jacket_armor_index] = 1;
 		else
-			other->client->pers.inventory[old_armor_index] += 2;
+			other->client->pers.inventory[old_armor_index] += 1;
+		*/
 	}
 
 	// if player has no armor, just use it
@@ -1222,7 +1230,7 @@ gitem_t	itemlist[] =
 		"models/items/armor/shard/tris.md2", EF_ROTATE,
 		NULL,
 /* icon */		"i_jacketarmor",
-/* pickup */	"Armor Shard",
+/* pickup */	"Coin",
 /* width */		3,
 		0,
 		NULL,
@@ -1415,7 +1423,7 @@ always owned, never in the world
 /* icon */		"a_grenades",
 /* pickup */	"Grenades",
 /* width */		3,
-		5,
+		1,
 		"grenades",
 		IT_AMMO|IT_WEAPON,
 		WEAP_GRENADES,

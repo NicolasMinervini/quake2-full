@@ -404,7 +404,7 @@ mmove_t hover_move_start_attack = {FRAME_attak101, FRAME_attak103, hover_frames_
 
 mframe_t hover_frames_attack1 [] =
 {
-	ai_charge,	-10,	hover_fire_blaster,
+	ai_charge,	-10,	NULL,
 	ai_charge,	-10,	hover_fire_blaster,
 	ai_charge,	0,		hover_reattack,
 };
@@ -424,7 +424,8 @@ void hover_reattack (edict_t *self)
 		if (visible (self, self->enemy) )
 			if (random() <= 0.6)		
 			{
-				self->monsterinfo.currentmove = &hover_move_attack1;
+				//self->monsterinfo.currentmove = &hover_move_attack1;
+				self->monsterinfo.currentmove = &hover_move_end_attack;
 				return;
 			}
 	self->monsterinfo.currentmove = &hover_move_end_attack;
@@ -439,6 +440,8 @@ void hover_fire_blaster (edict_t *self)
 	vec3_t	dir;
 	int		effect;
 
+	float randAtk = random();
+
 	if (self->s.frame == FRAME_attak104)
 		effect = EF_HYPERBLASTER;
 	else
@@ -451,7 +454,22 @@ void hover_fire_blaster (edict_t *self)
 	end[2] += self->enemy->viewheight;
 	VectorSubtract (end, start, dir);
 
-	monster_fire_blaster (self, start, dir, 1, 1000, MZ2_HOVER_BLASTER_1, effect);
+	if (randAtk >= 0.75) {
+		monster_fire_rocket(self, start, dir, 20, 350, MZ2_HOVER_BLASTER_1);
+	}
+	else if (randAtk >= 0.5) {
+		//monster_fire_bfg(self, start, dir, 1, 1, 1, 1, MZ2_HOVER_BLASTER_1);
+		monster_fire_railgun(self, start, dir, 20, 10, MZ2_HOVER_BLASTER_1);
+	}
+	else if (randAtk >= 0.25) {
+		monster_fire_grenade(self, start, dir, 25, 2, MZ2_HOVER_BLASTER_1);
+	}
+	else {
+		monster_fire_blaster(self, start, dir, 20, 200, MZ2_SUPERTANK_ROCKET_1, effect);
+		monster_fire_blaster(self, start, dir, 9, 300, MZ2_SUPERTANK_ROCKET_1, effect);
+		monster_fire_blaster(self, start, dir, 7, 400, MZ2_SUPERTANK_ROCKET_1, effect);
+		monster_fire_blaster(self, start, dir, 5, 500, MZ2_SUPERTANK_ROCKET_1, effect);
+	}
 }
 
 

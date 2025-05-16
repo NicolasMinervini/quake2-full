@@ -147,31 +147,31 @@ void chick_stand (edict_t *self)
 
 mframe_t chick_frames_start_run [] =
 {
-	ai_run, 1,  NULL,
+	ai_run, 0,  NULL,
 	ai_run, 0,  NULL,
 	ai_run, 0,	 NULL,
-	ai_run, -1, NULL, 
-	ai_run, -1, NULL, 
+	ai_run, 0, NULL, 
+	ai_run, 0, NULL, 
 	ai_run, 0,  NULL,
-	ai_run, 1,  NULL,
-	ai_run, 3,  NULL,
-	ai_run, 6,	 NULL,
-	ai_run, 3,	 NULL
+	ai_run, 0,  NULL,
+	ai_run, 0,  NULL,
+	ai_run, 0,	 NULL,
+	ai_run, 0,	 NULL
 };
 mmove_t chick_move_start_run = {FRAME_walk01, FRAME_walk10, chick_frames_start_run, chick_run};
 
 mframe_t chick_frames_run [] =
 {
-	ai_run, 6,	NULL,
-	ai_run, 8,  NULL,
-	ai_run, 13, NULL,
-	ai_run, 5,  NULL,
-	ai_run, 7,  NULL,
-	ai_run, 4,  NULL,
-	ai_run, 11, NULL,
-	ai_run, 5,  NULL,
-	ai_run, 9,  NULL,
-	ai_run, 7,  NULL
+	ai_run, 0,	NULL,
+	ai_run, 0,  NULL,
+	ai_run, 0, NULL,
+	ai_run, 0,  NULL,
+	ai_run, 0,  NULL,
+	ai_run, 0,  NULL,
+	ai_run, 0, NULL,
+	ai_run, 0,  NULL,
+	ai_run, 0,  NULL,
+	ai_run, 0,  NULL
 
 };
 
@@ -179,16 +179,16 @@ mmove_t chick_move_run = {FRAME_walk11, FRAME_walk20, chick_frames_run, NULL};
 
 mframe_t chick_frames_walk [] =
 {
-	ai_walk, 6,	 NULL,
-	ai_walk, 8,  NULL,
-	ai_walk, 13, NULL,
-	ai_walk, 5,  NULL,
-	ai_walk, 7,  NULL,
-	ai_walk, 4,  NULL,
-	ai_walk, 11, NULL,
-	ai_walk, 5,  NULL,
-	ai_walk, 9,  NULL,
-	ai_walk, 7,  NULL
+	ai_walk, 0,	 NULL,
+	ai_walk, 0,  NULL,
+	ai_walk, 0, NULL,
+	ai_walk, 0,  NULL,
+	ai_walk, 0,  NULL,
+	ai_walk, 0,  NULL,
+	ai_walk, 0, NULL,
+	ai_walk, 0,  NULL,
+	ai_walk, 0,  NULL,
+	ai_walk, 0,  NULL
 };
 
 mmove_t chick_move_walk = {FRAME_walk11, FRAME_walk20, chick_frames_walk, NULL};
@@ -241,25 +241,25 @@ mframe_t chick_frames_pain3 [] =
 {
 	ai_move, 0,		NULL,
 	ai_move, 0,		NULL,
-	ai_move, -6,	NULL,
-	ai_move, 3,		NULL,
-	ai_move, 11,	NULL,
-	ai_move, 3,		NULL,
+	ai_move, 0,	NULL,
+	ai_move, 0,		NULL,
+	ai_move, 0,	NULL,
 	ai_move, 0,		NULL,
 	ai_move, 0,		NULL,
-	ai_move, 4,		NULL,
-	ai_move, 1,		NULL,
 	ai_move, 0,		NULL,
-	ai_move, -3,	NULL,
-	ai_move, -4,	NULL,
-	ai_move, 5,		NULL,
-	ai_move, 7,		NULL,
-	ai_move, -2,	NULL,
-	ai_move, 3,		NULL,
-	ai_move, -5,	NULL,
-	ai_move, -2,	NULL,
-	ai_move, -8,	NULL,
-	ai_move, 2,		NULL
+	ai_move, 0,		NULL,
+	ai_move, 0,		NULL,
+	ai_move, 0,		NULL,
+	ai_move, 0,	NULL,
+	ai_move, 0,	NULL,
+	ai_move, 0,		NULL,
+	ai_move, 0,		NULL,
+	ai_move, 0,	NULL,
+	ai_move, 0,		NULL,
+	ai_move, 0,	NULL,
+	ai_move, 0,	NULL,
+	ai_move, 0,	NULL,
+	ai_move, 0,		NULL
 };
 mmove_t chick_move_pain3 = {FRAME_pain301, FRAME_pain321, chick_frames_pain3, chick_run};
 
@@ -463,7 +463,7 @@ void ChickRocket (edict_t *self)
 	VectorSubtract (vec, start, dir);
 	VectorNormalize (dir);
 
-	monster_fire_rocket (self, start, dir, 50, 500, MZ2_CHICK_ROCKET_1);
+	monster_fire_rocket (self, start, dir, 50, 150, MZ2_CHICK_ROCKET_1);
 }	
 
 void Chick_PreAttack1 (edict_t *self)
@@ -482,12 +482,12 @@ mframe_t chick_frames_start_attack1 [] =
 	ai_charge, 0,	Chick_PreAttack1,
 	ai_charge, 0,	NULL,
 	ai_charge, 0,	NULL,
-	ai_charge, 4,	NULL,
 	ai_charge, 0,	NULL,
-	ai_charge, -3,  NULL,
-	ai_charge, 3,	NULL,
-	ai_charge, 5,	NULL,
-	ai_charge, 7,	NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,  NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	NULL,
 	ai_charge, 0,	NULL,
 	ai_charge, 0,	NULL,
 	ai_charge, 0,	NULL,
@@ -498,31 +498,31 @@ mmove_t chick_move_start_attack1 = {FRAME_attak101, FRAME_attak113, chick_frames
 
 mframe_t chick_frames_attack1 [] =
 {
-	ai_charge, 19,	ChickRocket,
-	ai_charge, -6,	NULL,
-	ai_charge, -5,	NULL,
-	ai_charge, -2,	NULL,
-	ai_charge, -7,	NULL,
+	ai_charge, 0,	ChickRocket,
 	ai_charge, 0,	NULL,
-	ai_charge, 1,	NULL,
-	ai_charge, 10,	ChickReload,
-	ai_charge, 4,	NULL,
-	ai_charge, 5,	NULL,
-	ai_charge, 6,	NULL,
-	ai_charge, 6,	NULL,
-	ai_charge, 4,	NULL,
-	ai_charge, 3,	chick_rerocket
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	ChickReload,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	chick_rerocket
 
 };
 mmove_t chick_move_attack1 = {FRAME_attak114, FRAME_attak127, chick_frames_attack1, NULL};
 
 mframe_t chick_frames_end_attack1 [] =
 {
-	ai_charge, -3,	NULL,
 	ai_charge, 0,	NULL,
-	ai_charge, -6,	NULL,
-	ai_charge, -4,	NULL,
-	ai_charge, -2,  NULL
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,	NULL,
+	ai_charge, 0,  NULL
 };
 mmove_t chick_move_end_attack1 = {FRAME_attak128, FRAME_attak132, chick_frames_end_attack1, chick_run};
 

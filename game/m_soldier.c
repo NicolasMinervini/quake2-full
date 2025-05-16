@@ -771,6 +771,7 @@ mmove_t soldier_move_attack6 = {FRAME_runs01, FRAME_runs14, soldier_frames_attac
 
 void soldier_attack(edict_t *self)
 {
+	
 	T_RadiusDamage(self, self, 70, NULL, 150, MOD_BARREL);
 	gi.WriteByte(svc_temp_entity);
 	gi.WriteByte(TE_EXPLOSION2);
@@ -1230,8 +1231,8 @@ void SP_monster_soldier_x (edict_t *self)
 	self->monsterinfo.walk = soldier_walk;
 	self->monsterinfo.run = soldier_run;
 	self->monsterinfo.dodge = soldier_dodge;
-	self->monsterinfo.attack = soldier_attack;
-	self->monsterinfo.melee = NULL;
+	self->monsterinfo.attack = soldier_run;
+	self->monsterinfo.melee = soldier_attack;
 	self->monsterinfo.sight = soldier_sight;
 
 	gi.linkentity (self);

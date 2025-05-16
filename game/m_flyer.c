@@ -383,7 +383,8 @@ void flyer_fire (edict_t *self, int flash_number)
 	end[2] += self->enemy->viewheight;
 	VectorSubtract (end, start, dir);
 
-	monster_fire_blaster (self, start, dir, 1, 1000, flash_number, effect);
+	monster_fire_grenade(self, start, dir, 40, 1, flash_number);
+	//monster_fire_blaster (self, start, dir, 1, 1000, flash_number, effect);
 }
 
 void flyer_fireleft (edict_t *self)
@@ -402,17 +403,17 @@ mframe_t flyer_frames_attack2 [] =
 		ai_charge, 0, NULL,
 		ai_charge, 0, NULL,
 		ai_charge, 0, NULL,
-		ai_charge, -10, flyer_fireleft,			// left gun
-		ai_charge, -10, flyer_fireright,		// right gun
-		ai_charge, -10, flyer_fireleft,			// left gun
-		ai_charge, -10, flyer_fireright,		// right gun
-		ai_charge, -10, flyer_fireleft,			// left gun
-		ai_charge, -10, flyer_fireright,		// right gun
-		ai_charge, -10, flyer_fireleft,			// left gun
-		ai_charge, -10, flyer_fireright,		// right gun
+		ai_charge, 0, NULL,			// left gun
+		ai_charge, 0, NULL,		// right gun
+		ai_charge, 0, NULL,			// left gun
+		ai_charge, 0, NULL,		// right gun
+		ai_charge, 0, NULL,			// left gun
+		ai_charge, 0, NULL,		// right gun
+		ai_charge, 0, NULL,			// left gun
+		ai_charge, 0, NULL,		// right gun
 		ai_charge, 0, NULL,
 		ai_charge, 0, NULL,
-		ai_charge, 0, NULL,
+		ai_charge, -10, flyer_fireleft,
 		ai_charge, 0, NULL,
 		ai_charge, 0, NULL,
 		ai_charge, 0, NULL
@@ -613,7 +614,7 @@ void SP_monster_flyer (edict_t *self)
 	self->monsterinfo.walk = flyer_walk;
 	self->monsterinfo.run = flyer_run;
 	self->monsterinfo.attack = flyer_attack;
-	self->monsterinfo.melee = flyer_melee;
+	self->monsterinfo.melee = NULL;
 	self->monsterinfo.sight = flyer_sight;
 	self->monsterinfo.idle = flyer_idle;
 
